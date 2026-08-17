@@ -175,9 +175,9 @@ export default function ReportsPage() {
                   <td className="num">{fmtMoney(stats.byCategory[c.name] || 0)}</td>
                 </tr>
               ))}
-              <tr style={{ borderTop: "2px solid var(--gold)" }}>
+              <tr className="row-total">
                 <td style={{ fontWeight: 700, color: "var(--navy)" }}>Total</td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--bad)" }}>{fmtMoney(stats.totalExpense)}</td>
+                <td className="num" style={{ fontWeight: 700, color: "var(--negative)" }}>{fmtMoney(stats.totalExpense)}</td>
               </tr>
             </tbody>
           </table>
@@ -207,24 +207,24 @@ export default function ReportsPage() {
                       <strong>{b.id}</strong>
                     </td>
                     <td className="num">{fmtMoney(inc)}</td>
-                    <td className="num" style={{ color: "var(--bad)" }}>{fmtMoney(exp)}</td>
-                    <td className="num" style={{ fontWeight: 700, color: profit >= 0 ? "var(--good)" : "var(--bad)" }}>
+                    <td className="num" style={{ color: "var(--negative)" }}>{fmtMoney(exp)}</td>
+                    <td className="num" style={{ fontWeight: 700, color: profit >= 0 ? "var(--positive)" : "var(--negative)" }}>
                       {fmtMoney(profit)}
                     </td>
                   </tr>
                 );
               })}
-              <tr style={{ background: "var(--cream)" }}>
-                <td style={{ fontStyle: "italic", color: "var(--slate)" }}>General (not bus-specific)</td>
+              <tr style={{ background: "var(--line-soft)" }}>
+                <td style={{ fontStyle: "italic", color: "var(--muted)" }}>General (not bus-specific)</td>
                 <td></td>
-                <td className="num" style={{ fontStyle: "italic", color: "var(--slate)" }}>{fmtMoney(stats.generalExpense)}</td>
+                <td className="num" style={{ fontStyle: "italic", color: "var(--muted)" }}>{fmtMoney(stats.generalExpense)}</td>
                 <td></td>
               </tr>
-              <tr style={{ borderTop: "2px solid var(--gold)" }}>
+              <tr className="row-total">
                 <td style={{ fontWeight: 700, color: "var(--navy)" }}>Company Total</td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--good)" }}>{fmtMoney(stats.totalIncome)}</td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--bad)" }}>{fmtMoney(stats.totalExpense)}</td>
-                <td className="num" style={{ fontWeight: 700, color: net >= 0 ? "var(--good)" : "var(--bad)" }}>{fmtMoney(net)}</td>
+                <td className="num" style={{ fontWeight: 700, color: "var(--positive)" }}>{fmtMoney(stats.totalIncome)}</td>
+                <td className="num" style={{ fontWeight: 700, color: "var(--negative)" }}>{fmtMoney(stats.totalExpense)}</td>
+                <td className="num" style={{ fontWeight: 700, color: net >= 0 ? "var(--positive)" : "var(--negative)" }}>{fmtMoney(net)}</td>
               </tr>
             </tbody>
           </table>
@@ -264,22 +264,22 @@ export default function ReportsPage() {
             </thead>
             <tbody>
               {yearRows.map((r) => (
-                <tr key={r.month} style={{ background: r.month === month ? "var(--cream)" : "transparent" }}>
+                <tr key={r.month} style={{ background: r.month === month ? "var(--line-soft)" : "transparent" }}>
                   <td>
                     <strong>{MONTH_NAMES[r.month - 1]}</strong>
                   </td>
                   <td className="num">{fmtMoney(r.income)}</td>
                   <td className="num">{fmtMoney(r.expense)}</td>
                   <td className="num">{fmtMoney(r.opening)}</td>
-                  <td className="num" style={{ fontWeight: 700, color: r.closing >= 0 ? "var(--good)" : "var(--bad)" }}>
+                  <td className="num" style={{ fontWeight: 700, color: r.closing >= 0 ? "var(--positive)" : "var(--negative)" }}>
                     {fmtMoney(r.closing)}
                   </td>
                 </tr>
               ))}
-              <tr style={{ borderTop: "2px solid var(--gold)" }}>
+              <tr className="row-total">
                 <td style={{ fontWeight: 700, color: "var(--navy)" }}>TOTAL</td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--good)" }}>{fmtMoney(yearTotalIncome)}</td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--bad)" }}>{fmtMoney(yearTotalExpense)}</td>
+                <td className="num" style={{ fontWeight: 700, color: "var(--positive)" }}>{fmtMoney(yearTotalIncome)}</td>
+                <td className="num" style={{ fontWeight: 700, color: "var(--negative)" }}>{fmtMoney(yearTotalExpense)}</td>
                 <td></td>
                 <td className="num" style={{ fontWeight: 700, color: "var(--navy)" }}>{fmtMoney(finalClosing)}</td>
               </tr>

@@ -211,11 +211,9 @@ export default function ExpenseLogPage() {
                     <td>{fmtDateShort(e.expense_date)}</td>
                     <td>{e.category?.name}</td>
                     <td>
-                      <span className="pill" style={{ background: "var(--cream)", color: "var(--navy)" }}>
-                        {e.vehicle_tag || "General"}
-                      </span>
+                      <span className="pill">{e.vehicle_tag || "General"}</span>
                     </td>
-                    <td className="num" style={{ color: "var(--bad)", fontWeight: 700 }}>
+                    <td className="num" style={{ color: "var(--negative)", fontWeight: 700 }}>
                       {fmtMoney(Number(e.amount))}
                     </td>
                     <td>{e.remarks || <span className="muted">—</span>}</td>

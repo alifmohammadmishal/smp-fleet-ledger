@@ -115,16 +115,16 @@ export default function IncomePage() {
                         />
                       </td>
                     ))}
-                    <td className="num" style={{ color: "var(--good)", fontWeight: 700 }}>
+                    <td className="num" style={{ color: "var(--positive)", fontWeight: 700 }}>
                       {fmtMoney(total)}
                     </td>
                   </tr>
                 );
               })}
-              <tr style={{ borderTop: "2px solid var(--gold)" }}>
+              <tr className="row-total">
                 <td style={{ fontWeight: 700, color: "var(--navy)" }}>TOTAL</td>
                 <td colSpan={5}></td>
-                <td className="num" style={{ fontWeight: 700, color: "var(--good)" }}>
+                <td className="num" style={{ fontWeight: 700, color: "var(--positive)" }}>
                   {fmtMoney(totalIncome)}
                 </td>
               </tr>
